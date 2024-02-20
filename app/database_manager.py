@@ -56,7 +56,7 @@ class DatabaseManger:
             return result[0]
         return None
     
-    def delete_song(self, song_id: int):
+    def delete_song_by_id(self, song_id: int) -> bool:
         try:
             self.cursor.execute("DELETE FROM songs WHERE id = ?", (song_id,))
             self.connection.commit()
@@ -70,5 +70,14 @@ class DatabaseManger:
             print(f"number_of_rows_after_deletion = {self.cursor.rowcount}")
             return False
         return True
-
-        
+    
+    def delete_song_by_name_and_author(self, name:str, author:str) -> bool:
+        song_id = self.get_song_id(name, author)
+        if song_id is not None:
+            return self.delete_song_by_id(song_id=song_id)
+        return False
+    
+    def song_exists(self, name:str, author:str) -> bool:
+        if self.get_song_id(name, author) is not None:
+            return True
+        return False

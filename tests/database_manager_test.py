@@ -14,6 +14,6 @@ class TestDatabaseManager:
         song_id = self.db_manager.get_song_id(self.test_song, self.test_author)
         print(song_id)
         if song_id is not None:
-            assert self.db_manager.delete_song(song_id)
+            assert self.db_manager.delete_song_by_id(song_id)
             return 
         raise RuntimeError("song_id is None after get_song_id()")
