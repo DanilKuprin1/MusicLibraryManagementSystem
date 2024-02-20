@@ -50,14 +50,14 @@ class DatabaseManger:
         except sqlite3.Error as e:
             print(e)
             return None
-        str_id = self.cursor.fetchone()
-        print(str_id)
-        return 1
-
+        result = self.cursor.fetchone()
+        print(result)
+        if result is not None:
+            return result[0]
+        return None
     
     def delete_song(self, song_id: int):
         try:
-            number_of_rows_before_deletion = self.cursor.rowcount
             self.cursor.execute("DELETE FROM songs WHERE id = ?", (song_id,))
             self.connection.commit()
         except sqlite3.OperationalError as e:
@@ -66,7 +66,8 @@ class DatabaseManger:
         except sqlite3.Error as e:
             print(e)
             return False
-        if self.cursor.rowcount == number_of_rows_before_deletion:
+        if self.cursor.rowcount <= 0:
+            print(f"number_of_rows_after_deletion = {self.cursor.rowcount}")
             return False
         return True
 
