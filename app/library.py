@@ -9,8 +9,13 @@ class Library:
     def __init__(self):
         self.db = DatabaseManger()
 
-    def add_song(self, name: str, author:str)->bool:
-        return self.db.add_song(name, author)
+    def add_song(self, name: Optional[str] = None, author:Optional[str] = None, song:Optional[Song] = None)->bool:
+        if name is not None and author is not None:
+            return self.db.add_song(name, author)
+        if song is not None:
+            return self.db.add_song(song.name, song.author)
+        else:
+            return False
 
     def remove_song(self, name:str, author:str) -> bool:
         return self.db.delete_song_by_name_and_author(name, author)

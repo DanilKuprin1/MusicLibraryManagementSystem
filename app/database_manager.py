@@ -51,7 +51,6 @@ class DatabaseManger:
             print(e)
             return None
         result = self.cursor.fetchone()
-        print(result)
         if result is not None:
             return result[0]
         return None
@@ -67,7 +66,6 @@ class DatabaseManger:
             print(e)
             return False
         if self.cursor.rowcount <= 0:
-            print(f"number_of_rows_after_deletion = {self.cursor.rowcount}")
             return False
         return True
     
