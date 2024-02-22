@@ -1,7 +1,7 @@
 Author: Danil Kuprin
 Date: 20 Feb 2024
 
-Description: This CLI application that simulates a MusicLibraryManagementSystem
+Description: This is a CLI application that simulates a MusicLibraryManagementSystem
 
 Instructions to run:
 1) Clone the repository with git clone 
