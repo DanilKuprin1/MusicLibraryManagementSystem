@@ -8,5 +8,5 @@ Instructions to run:
 2) cd into the project directory: cd MusicLibraryManagementSystem 
 3) Download peotry with: pip3 install poetry
 4) Run: poetry install
-5) Run: petry shell
+5) Run: poetry shell
 6) Run: python -m app.main
